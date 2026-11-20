@@ -1,0 +1,19 @@
+# Optional OCR stack.
+#
+# PaddleOCR depends on `paddlepaddle`, whose prebuilt wheels lag behind the
+# newest Python releases. Install this file SEPARATELY after the main
+# requirements so a paddle failure cannot break the rest of the project:
+#
+#   .venv\Scripts\python.exe -m pip install -r requirements.txt
+#   .venv\Scripts\python.exe -m pip install -r requirements-ocr.txt
+#
+# If this install fails on your Python version, the app still runs fully;
+# only image/scanned-PDF OCR is disabled (a warning is logged instead).
+
+paddlepaddle>=3.0.0
+paddleocr>=3.0.0
+
+# Windows + Smart App Control can block compiled DLLs from freshly installed
+# packages ("An Application Control policy has blocked this file"). chardet>=6
+# ships a native mypyc binary that triggers this; 5.x is pure Python and works.
+chardet==5.2.0
